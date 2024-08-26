@@ -95,10 +95,9 @@
 										<div class="col-12">
 										  <label for="inputProductType" class="form-label">Product Type</label>
 										  <select class="form-select" id="inputProductType" required name="category">
-											<option value="">Select Product type</option>
-											  @for($i=0; $i < count($sellerCategory); $i++)
-											  <option value="{{$sellerCategory[$i]['categoryId']}}">{{$sellerCategory[$i]['categoryName']}}</option>
-											  @endfor
+											  @foreach ($sellerCategory as $item)
+											  <option value="{{$item->category_id}}">{{$item->category_name}}</option>
+											  @endforeach
 											
 											  
 											</select>

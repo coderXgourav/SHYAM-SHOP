@@ -27,16 +27,12 @@ class SellerProductController extends Controller
     public function addProductPage()
     {
         $data = SellerModel::find(session('seller'));
+        
         $sellerCategory = SellerCategoryModel::where('category_admin',$data->sellerId)->orderBy('category_id','DESC')->get();
-        foreach($sellerCategory as $cateData => $val){
+   
+      
 
-            $categoryData[] = [
-                'categoryName' => $val['category_name'],
-                'categoryId' => $val['category_id']
-            ];
-        }
-
-       return view('seller.dashboard.product.addProduct',['seller'=>$data ,'sellerCategory'=>$categoryData]);
+       return view('seller.dashboard.product.addProduct',['seller'=>$data ,'sellerCategory'=>$sellerCategory]);
     }
 
        // toastr 
@@ -226,4 +222,3 @@ if($image != 0){
 
 
  }
-
